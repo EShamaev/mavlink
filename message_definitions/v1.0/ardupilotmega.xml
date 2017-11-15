@@ -1481,5 +1481,30 @@
       <field name="Voltage" type="uint16_t" units="mV">Voltage of a circuit</field>
       <field name="Current" type="int16_t" units="mA">Current through circuit</field>
     </message>
+    <!-- ECB state message -->
+    <enum name="ECB_STATUS_FLAGS">
+      <entry value="4" name="ECB_STATUS_FLAGS_STATUS_FLAG_OVERHEAT">
+        <description>Temperature of ECB is above limit</description>
+      </entry>
+      <entry value="2" name="ECB_STATUS_FLAGS_STATUS_FLAG_OVERCURRENT">
+        <description>Total current is more than the capability of ECB</description>
+      </entry>
+      <entry value="1" name="ECB_STATUS_FLAGS_STATUS_FLAG_SWITCH_FAULT">
+        <description>One ore more switches are faulty</description>
+      </entry>
+    </enum>
+    <message id="11100" name="ECB_STATUS">
+      <description>Electronic Circuit Breaker status message</description>
+      <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>
+      <field type="uint8_t" name="circuit_id">System unique ID of Electronic Circuit Breaker</field>
+      <field type="uint8_t" name="number_of_input_channels">Total number of power supplies</field>
+      <field type="uint8_t" name="number_of_output_channels">Total number of switched power circuits</field>
+      <field type="uint8_t" name="nominal_voltage" units="V">Nominal voltage of ECB</field>
+      <field type="uint8_t" name="maximum_total_current" units="A">Maximum total current that ECB is capable withstand</field>
+      <field type="uint16_t" name="temperature" units="mV">Temperature of ECB</field>
+      <field type="int16_t" name="total_current" units="mA">Combined current through ECB</field>
+      <field type="int8_t" name="total_current">Combined current through ECB</field>
+      <field type="int8_t" name="status_flags">Combination of flags from ECB_STATUS_FLAGS enum</field>
+    </message>
   </messages>
 </mavlink>
