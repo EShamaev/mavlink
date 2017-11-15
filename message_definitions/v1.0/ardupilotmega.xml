@@ -1473,5 +1473,13 @@
       <field name="AOA" type="float">Angle of Attack (degrees)</field>
       <field name="SSA" type="float">Side Slip Angle (degrees)</field>
     </message>
+    <!-- Electric circuit message -->
+    <message id="11100" name="ELECTRIC_CIRCUIT_STATUS">
+      <description>Electric circuit status message</description>
+      <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>
+      <field type="uint16_t" name="circuit_id">System unique ID of electric circuit</field>
+      <field name="Voltage" type="uint16_t" units="mV">Voltage of a circuit</field>
+      <field name="Current" type="int16_t" units="mA">Current through circuit</field>
+    </message>
   </messages>
 </mavlink>
